@@ -1,0 +1,22 @@
+# Shared CI from dryan-org/reusable-workflows: runs the root build and test
+# scripts and reports as "ci / build", the check the rulesets require.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: dryan-org/reusable-workflows/.github/workflows/dependabot-ci.yml@v1
+    secrets:
+      # The private dryan-org/pedantry dev dependency installs from GitHub.
+      ci_read_app_key: ${{ secrets.CI_READ_APP_KEY }}

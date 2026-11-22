@@ -1,0 +1,39 @@
+{
+  "name": "@dryan/app-attest-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Apple App Attest verification for Cloudflare Workers: attestation, assertions with the counter check, single-use challenges, the app registry, and the /challenge and /attest handlers",
+  "license": "UNLICENSED",
+  "exports": {
+    ".": "./src/index.ts",
+    "./appattest": "./src/appattest.ts",
+    "./testing": "./src/testing.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit && vitest run",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@peculiar/x509": "^1.12.3",
+    "asn1js": "^3.0.5",
+    "cbor-x": "^1.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.0.0",
+    "@dryan/pedantry": "github:dryan-org/pedantry#v2.0.4",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.3",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.12"
+  },
+  "prettier": "@dryan/pedantry/prettier"
+}
